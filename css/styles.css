@@ -661,27 +661,18 @@ h1{
   border-color:var(--teal);
   background:#f1fbf9;
 }
- 
- 
 /* =========================================
    RESPONSIVE — MÓVIL
    ========================================= */
- 
 @media(max-width:640px){
- 
   .wrap{
     padding:16px 14px 50px;
   }
- 
   .top{
     padding:14px 16px;
   }
- 
-  h1{ font-size:15px; }
- 
+  h1{ font-size:15px; } 
   .status-pill span{ display:none; }
- 
   .card{ padding:20px; }
- 
 }
  

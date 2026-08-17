@@ -233,7 +233,7 @@ const worker = new Worker('./worker.js');
     resultRows = [];
   
     try{
-      // ---- STEP 1: read GRAM EAM ---- en el 10 porciento se laguea - ta para corregir
+      // ---- ETAPA 1: read GRAM EAM ---- / Observación:en el 10 porciento se laguea - ta para corregir
       setLoading(
         10,
         'Leyendo reporte GRAM EAM',
@@ -259,7 +259,7 @@ const worker = new Worker('./worker.js');
 
 
   
-      // find header row (contains SOLICITUD)
+      // find header row (contains SOLICITUD) / Up
       let headerIdx = -1, headers = [];
       for(let i=0;i<Math.min(gramAoa.length, 30);i++){
         const row = gramAoa[i] || [];
@@ -308,11 +308,6 @@ const worker = new Worker('./worker.js');
       );
       
       await tick();
-
-
-
-
-
 
 
       // ---- STEP 2: read BASE DE SEGUIMIENTO (BD 2022-2026) ----

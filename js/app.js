@@ -1,6 +1,4 @@
-/* =====================================================
-   ACTIVIDADES DIARIAS
-   ===================================================== */
+/* Actividades Diariass  */
  
    const DAILY = [
  
@@ -21,40 +19,34 @@
  
  
 /* =====================================================
-   ACTIVIDADES ESPECIALES POR DÍA DE LA SEMANA
+   Paneles Excepcionales
    DOMINGO=0  LUNES=1  MARTES=2  MIÉRCOLES=3
    JUEVES=4   VIERNES=5  SÁBADO=6
    ===================================================== */
- 
 const WEEKLY = {
- 
     1: [
         ["05:00", "TVM"],
         ["07:00", "SMP, SNC, SEMAFORO"],
         ["15:00", "Opersac"],
         ["21:30", "Validación de Patios"]
     ],
- 
     2: [
         ["05:00", "Ingeniería"]
     ],
- 
     4: [
         ["06:30", "SMP"],
         ["21:30", "Validación de Patios"]
     ],
- 
     5: [
         ["05:00", "PDR"]
     ]
- 
 };
  
  
 const DAYS = ["DOMINGO","LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO"];
 const MONTHS = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
  
-/* La tarea se habilita este número de minutos antes de su hora */
+/* La tarea se habilita este número de minutos antes de su hora*/
 const ENABLE_BEFORE_MIN = 15;
  
 /* El checklist se habilita este número de días antes de la fecha */
@@ -135,9 +127,7 @@ function buildActivities(date){
 }
  
  
-/* =====================================================
-   RELOJ
-   ===================================================== */
+/*Reloj*/
  
 function updateClock(){
     const date = new Date();
@@ -150,9 +140,7 @@ function updateClock(){
 }
  
  
-/* =====================================================
-   TARJETA PRINCIPAL — LA ÚNICA TAREA QUE IMPORTA
-   ===================================================== */
+/*Tarjeta Principal*/
  
 function renderTask(date){
  
@@ -170,10 +158,10 @@ function renderTask(date){
  
     if(!pending){
         time.textContent = "—";
-        name.textContent = "Jornada completada";
+        name.textContent = "Excelente trabajo, estoy orgullozo de Ti";
         button.disabled = true;
         button.textContent = "SIN PENDIENTES";
-        hint.textContent = "✓ Todo al día";
+        hint.textContent = "✓ Buen descanso";
         return;
     }
  

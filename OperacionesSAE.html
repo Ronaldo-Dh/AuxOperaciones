@@ -97,34 +97,19 @@
                 </section>
  
  
-                <!-- =====================================
-                     VER TODO — un solo botón
-                     ===================================== -->
- 
+            <!----> 
                 <button class="see-all" id="openTimeline">
- 
                     <span>Ver mis actividades de hoy</span>
                     <b id="todayCount">0</b>
- 
                 </button>
- 
             </div>
- 
-        </div>
- 
- 
-        <!-- =====================================
-             MIS APLICACIONES
-             ===================================== -->
+        </div> 
+        <!---->
  
         <section class="apps-section">
- 
             <div class="section-title">Mis aplicaciones</div>
- 
             <div class="apps-grid">
- 
                 <a class="app-card" href="./app-E3E4/E3_E4.html">
-
                     <div class="app-icon yellow">E3</div>
                     <div class="app-name">Validar E3/E4</div>
                 </a>
@@ -142,76 +127,41 @@
                     </div>
                     <div class="app-name">Pronto</div>
                 </div>
- 
             </div>
- 
         </section>
- 
     </main>
- 
 </div>
  
- 
- 
-<!-- =========================================
-     MODAL: TODAS LAS ACTIVIDADES DEL DÍA
-     ========================================= -->
- 
+<!--Model -->
 <div class="modal-overlay" id="timelineModal">
- 
     <div class="modal">
- 
         <button class="modal-close" id="closeTimeline">×</button>
- 
         <h2>Actividades de hoy</h2>
- 
         <div id="timeline"></div>
- 
     </div>
- 
 </div>
  
- 
- 
-<!-- =========================================
-     MODAL: PROGRAMAR CHECKLIST
-     ========================================= -->
- 
+<!--CkList-->
 <div class="modal-overlay" id="checklistModal">
- 
     <div class="modal">
- 
         <button class="modal-close" id="closeModal">×</button>
- 
         <h2>Programar checklist</h2>
- 
         <p>Elige qué programación quieres confirmar.</p>
- 
         <div class="program-options">
- 
             <button class="program-option" data-period="quincena">
                 <strong>Quincena</strong>
                 <span>Día 15</span>
             </button>
- 
             <button class="program-option" data-period="fin">
                 <strong>Fin de mes</strong>
                 <span>Último día</span>
             </button>
- 
         </div>
- 
         <button class="primary full" id="saveChecklist" disabled>
             CONFIRMAR
         </button>
- 
     </div>
- 
 </div>
- 
- 
-<script src="js/app.js"></script>
- 
+<script src="js/app.js"></script> 
 </body>
- 
 </html>

@@ -149,24 +149,8 @@
       }
     }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   /* ================================
-     CUERPO PRINCIPAL — L1 METRO
+     CUERPO PRINCIPAL
      ================================ */
   
      .card{
@@ -262,18 +246,9 @@
       color:#8a929d;
       margin-top:3px;
     }
-    
-    
-  
-  
-  
-  
-  
-  
-  
   
   /* ================================
-     BOTONES — ESTILO LÍNEA 1 METRO
+     BOTONES
      ================================ */
   
      .actions{
@@ -468,13 +443,6 @@
       line-height:1.35;
     }
   
-  
-  
-  
-  
-  
-  
-  
   /* ================================
      RESULTADOS
      ================================ */
@@ -515,13 +483,7 @@
     .filter::placeholder{
       color:#a0a7b0;
     }
-    
-    
-  
-  
-  
-  
-  
+
   /* ================================
      TABLA
      ================================ */
@@ -585,11 +547,9 @@
       overflow:auto;
     }
     
-    
     /* ================================
        SIN RESULTADOS
        ================================ */
-    
     .empty{
       text-align:center;
       padding:55px 20px;
@@ -599,12 +559,9 @@
       border:1px dashed #d9dee3;
       border-radius:12px;
     }
-    
-    
     /* ================================
        FOOTER
        ================================ */
-    
     footer.note{
       margin-top:34px;
       color:#8a929d;
@@ -613,45 +570,34 @@
       border-top:1px solid #e2e5e9;
       padding-top:16px;
     }
-    
-    
     /* ================================
        RESPONSIVE
        ================================ */
-    
-    @media (max-width:800px){
-    
+    @media (max-width:800px){    
       .stats{
         grid-template-columns:repeat(2,1fr);
       }
-    
     }
     
     @media (max-width:600px){
-    
       .wrap{
         padding:20px 14px 60px;
       }
-    
       .actions{
         flex-direction:column;
         align-items:stretch;
       }
-    
       .actions button{
         width:100%;
       }
-    
       .filter{
         width:100%;
       }
-    
     }
   
   
   /* =========================================
      PANTALLA DE PROCESAMIENTO
-     ESTILO LÍNEA 1 METRO DE LIMA
      ========================================= */
   
      .loading-overlay{
