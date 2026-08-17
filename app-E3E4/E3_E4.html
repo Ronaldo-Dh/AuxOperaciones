@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cruce ST/PT · Base de Seguimiento</title>
+<link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<!-- ================================
+     PANTALLA DE CARGA
+     ================================ -->
+     <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-box">
+    
+        <div class="loading-brand">
+          <div class="loading-mark">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKY-WTmyJTCGwqtf8H3Sq_SIQP-D8VFX5f2szc4XSag&s=10">
+          </div>
+    
+          <div>
+            <div class="loading-title">LÍNEA 1 METRO DE LIMA</div>
+            <div class="loading-subtitle">CRUCE ST/PT · BASE DE SEGUIMIENTO</div>
+          </div>
+        </div>
+    
+        <div class="loading-spinner"></div>
+    
+        <div class="loading-message" id="loadingMessage">
+          Preparando procesamiento…
+        </div>
+    
+        <div class="loading-detail" id="loadingDetail">
+          No cierres esta ventana mientras se procesan los archivos.
+        </div>
+    
+        <div class="loading-progress">
+          <div class="loading-progress-bar" id="loadingProgressBar"></div>
+        </div>
+    
+        <div class="loading-percent" id="loadingPercent">
+          0%
+        </div>
+    
+      </div>
+    </div>
+
+
+
+
+
+
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+  
+      <div class="brand-mark">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKY-WTmyJTCGwqtf8H3Sq_SIQP-D8VFX5f2szc4XSag&s=10">
+      </div>
+  
+      <div>
+        <h1>ST/PT — Fallos para mandar a validar · Beta</h1>
+  
+        <div class="brand-sub">
+          LÍNEA 1 METRO DE LIMA · GRAM EAM × BASE DE SEGUIMIENTO
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="status-pill" id="statusPill">
+      esperando archivos
+    </div>
+  </header>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>1 · Reporte GRAM EAM (ST con PT)</h3>
+      <p class="hint">Archivo con las Solicitudes de Trabajo y sus Pedidos de Trabajo asociados (fechas, usuario PT).</p>
+      <label class="drop" id="dropGram">
+        <input type="file" id="fileGram" accept=".xlsx,.xls">
+        <div class="ic">⇪</div>
+        <div class="label">Arrastra o haz clic para subir el .xlsx</div>
+        <div class="fname" id="fnameGram"></div>
+        <div class="fmeta" id="fmetaGram"></div>
+      </label>
+    </div>
+    <div class="card">
+      <h3>2 · Base de Seguimiento</h3>
+      <p class="hint">Archivo con las hojas BD 2022 – BD 2026 (ID, COD_SGE, ST/PT, STATUS…).</p>
+      <label class="drop" id="dropBase">
+        <input type="file" id="fileBase" accept=".xlsx,.xls">
+        <div class="ic">⇪</div>
+        <div class="label">Arrastra o haz clic para subir el .xlsx</div>
+        <div class="fname" id="fnameBase"></div>
+        <div class="fmeta" id="fmetaBase"></div>
+      </label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="primary" id="btnProcess" disabled>Procesar</button>
+    <button class="ghost" id="btnDownload" disabled>Descargar resultado (.xlsx)</button>
+    <button class="ghost" id="btnReset">Reiniciar</button>
+  </div>
+
+  <div class="log" id="log"></div>
+
+  <div class="stats" id="stats" style="display:none;">
+    <div class="stat"><div class="n" id="statGramRows">–</div><div class="l">filas leídas en GRAM EAM</div></div>
+    <div class="stat"><div class="n" id="statBaseRows">–</div><div class="l">filas combinadas BD 2022–2026</div></div>
+    <div class="stat"><div class="n" id="statEnCurso">–</div><div class="l">ST numéricas "EN CURSO" (limpias)</div></div>
+    <div class="stat"><div class="n" id="statMatch">–</div><div class="l">coincidencias finales (resultado)</div></div>
+  </div>
+
+  <div class="results-head" id="resultsHead" style="display:none;">
+    <h2>Resultado</h2>
+    <input class="filter" id="filterBox" placeholder="Filtrar por ST, COD_SGE, usuario…">
+  </div>
+  <div class="table-wrap" id="tableWrap" style="display:none;">
+    <div class="scroll-body">
+      <table>
+        <thead>
+          <tr>
+            <th class="mono">COD_SGE</th>
+            <th class="mono">Solicitud de trabajo</th>
+            <th class="mono">Fecha Final</th>
+            <th class="mono">Fecha Inicio</th>
+            <th class="mono">Fecha Fin</th>
+            <th class="mono">Usuario PT</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="empty" id="emptyMsg" style="display:none;">Sin coincidencias — revisa los archivos cargados.</div>
+
+  <footer class="note">
+    Lógica: combina BD 2022–2026,
+    filtra STATUS = "EN CURSO" y descarta ST/PT vacíos o con prefijo GYM (quedándonos solo con ST numéricas limpias);
+    luego cruza cada Solicitud de Trabajo del reporte GRAM EAM contra esa lista (equivalente a BUSCARX) y conserva
+    únicamente las coincidencias — el mismo resultado que quitar los #N/A en tu filtro de Excel.
+    SAE: 12/08/2026
+  </footer>
+
+</div>
+
+<script src="./script.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,835 @@
+:root{
+    --bg:#f5f6f8;
+  
+    /* Institucional */
+    --panel:#17233a;
+    --panel-2:#26344d;
+    --line:#d9dee5;
+  
+    --text:#20242b;
+    --muted:#737c88;
+  
+    /* Acento Metro */
+    --accent:#f5b400;
+    --accent-dim:#d99f00;
+  
+    --amber:#f5b400;
+    --red:#c94b4b;
+  
+    --mono:"IBM Plex Mono","SF Mono",Menlo,Consolas,monospace;
+    --sans:"Inter","Segoe UI",system-ui,sans-serif;
+  }
+  
+  
+  
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 90% -10%, rgba(47,214,192,0.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      min-height:100vh;
+    }
+    .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 80px;}
+  
+    /* */
+  
+    header.top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+      padding:22px 28px;
+      margin-bottom:28px;
+      background:#151922;
+      border:1px solid #252b36;
+      border-radius:16px;
+      box-shadow:0 8px 24px rgba(0,0,0,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    
+    header.top::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:3px;
+      background:linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #d8d8d8 45%,
+        #ffffff 100%
+      );
+      opacity:.9;
+    }
+    
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      position:relative;
+      z-index:1;
+    }
+    
+    .brand-mark{
+      width:52px;
+      height:52px;
+      border-radius:12px;
+      background:#ffffff;
+      color:#151922;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:var(--mono);
+      font-weight:800;
+      font-size:17px;
+      letter-spacing:-.5px;
+      flex-shrink:0;
+      box-shadow:0 4px 12px rgba(0,0,0,.18);
+    }
+  
+    .brand-mark img{
+      max-width:80%;
+      max-height:80%;
+      object-fit:contain;
+      filter:grayscale(1);
+    }
+    
+    h1{
+      font-size:20px;
+      margin:0;
+      letter-spacing:.1px;
+      color:#ffffff;
+      font-weight:700;
+    }
+    
+    .brand-sub{
+      color:#9da6b5;
+      font-size:11.5px;
+      font-family:var(--mono);
+      margin-top:5px;
+      letter-spacing:.3px;
+    }
+    
+    .status-pill{
+      position:relative;
+      z-index:1;
+      font-family:var(--mono);
+      font-size:11px;
+      color:#d8dee8;
+      border:1px solid #3b4351;
+      background:#202632;
+      padding:7px 12px;
+      border-radius:20px;
+      white-space:nowrap;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    
+    @media (max-width:700px){
+      header.top{
+        align-items:flex-start;
+        padding:20px;
+      }
+    
+      .status-pill{
+        font-size:10px;
+      }
+    
+      h1{
+        font-size:17px;
+      }
+    
+      .brand-mark{
+        width:46px;
+        height:46px;
+      }
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ================================
+     CUERPO PRINCIPAL — L1 METRO
+     ================================ */
+  
+     .card{
+      background:#ffffff;
+      border:1px solid #e2e5e9;
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 3px 12px rgba(20,25,35,.05);
+      transition:box-shadow .2s ease, transform .2s ease;
+    }
+    
+    .card:hover{
+      box-shadow:0 6px 18px rgba(20,25,35,.08);
+    }
+    
+    .card h3{
+      margin:0 0 6px;
+      font-size:15px;
+      color:#20242b;
+      font-weight:700;
+    }
+    
+    .card .hint{
+      color:#737c88;
+      font-size:12px;
+      margin:0 0 16px;
+      line-height:1.55;
+    }
+    
+  
+  /* ================================
+     CARGA DE ARCHIVOS
+     ================================ */
+  
+     .drop{
+      border:1.5px dashed #cdd3da;
+      border-radius:11px;
+      padding:25px 16px;
+      text-align:center;
+      cursor:pointer;
+      transition:
+        border-color .2s ease,
+        background .2s ease,
+        transform .15s ease;
+      background:#f8f9fa;
+    }
+    
+    .drop:hover,
+    .drop.drag{
+      border-color:#2fd6c0;
+      background:#f1fbf9;
+      transform:translateY(-1px);
+    }
+    
+    .drop input{
+      display:none;
+    }
+    
+    .drop .ic{
+      width:42px;
+      height:42px;
+      margin:0 auto 10px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:20px;
+      color:#168f80;
+      background:#e6f7f4;
+    }
+    
+    .drop .label{
+      font-size:12.5px;
+      color:#5f6874;
+    }
+    
+    .drop.filled{
+      border-style:solid;
+      border-color:#2fd6c0;
+      background:#f1fbf9;
+    }
+    
+    .drop .fname{
+      font-family:var(--mono);
+      font-size:12px;
+      color:#252a32;
+      margin-top:8px;
+      word-break:break-all;
+    }
+    
+    .drop .fmeta{
+      font-size:10.5px;
+      color:#8a929d;
+      margin-top:3px;
+    }
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ================================
+     BOTONES — ESTILO LÍNEA 1 METRO
+     ================================ */
+  
+     .actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:24px 0 10px;
+      flex-wrap:wrap;
+    }
+    
+    button{
+      font-family:var(--sans);
+      font-weight:700;
+      font-size:12.5px;
+      border:none;
+      border-radius:6px;
+      padding:11px 19px;
+      cursor:pointer;
+      transition:
+        transform .12s ease,
+        box-shadow .15s ease,
+        background .15s ease,
+        border-color .15s ease;
+    }
+    
+    /* BOTÓN PRINCIPAL — amarillo institucional */
+    button.primary{
+      background:#f5b400;
+      color:#151922;
+      border:1px solid #e0a500;
+      box-shadow:0 3px 8px rgba(0,0,0,.12);
+    }
+    
+    button.primary:hover:not(:disabled){
+      background:#ffc52b;
+      transform:translateY(-1px);
+      box-shadow:0 5px 12px rgba(0,0,0,.16);
+    }
+    
+    button.primary:active:not(:disabled){
+      transform:translateY(0);
+      box-shadow:0 2px 5px rgba(0,0,0,.12);
+    }
+    
+    button.primary:disabled{
+      background:#d9dde2;
+      color:#858c95;
+      border-color:#d1d5da;
+      opacity:.7;
+      cursor:not-allowed;
+      box-shadow:none;
+    }
+    
+    /* BOTONES SECUNDARIOS */
+    button.ghost{
+      background:#ffffff;
+      color:#26344d;
+      border:1px solid #b9c1cb;
+      box-shadow:0 2px 5px rgba(20,25,35,.04);
+    }
+    
+    button.ghost:hover:not(:disabled){
+      background:#f1f4f7;
+      border-color:#26344d;
+      color:#17233a;
+      transform:translateY(-1px);
+    }
+    
+    button.ghost:active:not(:disabled){
+      transform:translateY(0);
+    }
+    
+    button.ghost:disabled{
+      opacity:.45;
+      cursor:not-allowed;
+    }
+    
+    /* BOTÓN DESCARGAR — aspecto operativo */
+    #btnDownload{
+      font-family:var(--mono);
+      font-size:11.5px;
+    }
+    
+    /* BOTÓN REINICIAR */
+    #btnReset{
+      color:#69727e;
+    }
+    
+    #btnReset:hover{
+      color:#26344d;
+      border-color:#8e99a7;
+    }
+    
+    /* ================================
+       RESPONSIVE
+       ================================ */
+    
+    @media (max-width:600px){
+    
+      .actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+    
+      .actions button{
+        width:100%;
+      }
+    }
+  
+  
+  
+  /* ================================
+     LOG DE PROCESO
+     ================================ */
+  
+     .log{
+      font-family:var(--mono);
+      font-size:11.5px;
+      line-height:1.8;
+      color:#69727e;
+      background:#ffffff;
+      border:1px solid #e1e5e9;
+      border-radius:11px;
+      padding:12px 15px;
+      margin-top:8px;
+      max-height:220px;
+      overflow-y:auto;
+      box-shadow:0 2px 8px rgba(20,25,35,.035);
+    }
+    
+    .log .ln{
+      display:flex;
+      gap:10px;
+    }
+    
+    .log .ln .t{
+      color:#a0a7b0;
+      flex-shrink:0;
+    }
+    
+    .log .ln.ok .msg::before{
+      content:"✓ ";
+      color:#1f9f8f;
+    }
+    
+    .log .ln.warn .msg::before{
+      content:"! ";
+      color:#c58b32;
+    }
+    
+    .log .ln.run .msg::before{
+      content:"› ";
+      color:#8c96a2;
+    }
+    
+    .log .ln.err .msg::before{
+      content:"✕ ";
+      color:#d95353;
+    }
+    
+    
+    /* ================================
+       ESTADÍSTICAS
+       ================================ */
+    
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin:24px 0;
+    }
+    
+    .stat{
+      background:#ffffff;
+      border:1px solid #e1e5e9;
+      border-radius:12px;
+      padding:16px 17px;
+      box-shadow:0 2px 8px rgba(20,25,35,.035);
+    }
+    
+    .stat .n{
+      font-family:var(--mono);
+      font-size:23px;
+      font-weight:700;
+      color:#1f9f8f;
+    }
+    
+    .stat .l{
+      font-size:11px;
+      color:#737c88;
+      margin-top:5px;
+      line-height:1.35;
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ================================
+     RESULTADOS
+     ================================ */
+  
+     .results-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin:30px 0 12px;
+      flex-wrap:wrap;
+    }
+    
+    .results-head h2{
+      font-size:16px;
+      margin:0;
+      color:#252a32;
+    }
+    
+    .filter{
+      background:#ffffff;
+      border:1px solid #d8dde3;
+      border-radius:8px;
+      padding:9px 12px;
+      color:#303640;
+      font-family:var(--sans);
+      font-size:12px;
+      width:250px;
+      outline:none;
+      transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    
+    .filter:focus{
+      border-color:#2fd6c0;
+      box-shadow:0 0 0 3px rgba(47,214,192,.10);
+    }
+    
+    .filter::placeholder{
+      color:#a0a7b0;
+    }
+    
+    
+  
+  
+  
+  
+  
+  /* ================================
+     TABLA
+     ================================ */
+  
+     .table-wrap{
+      border:1px solid #dfe3e7;
+      border-radius:12px;
+      overflow:hidden;
+      background:#ffffff;
+      box-shadow:0 3px 12px rgba(20,25,35,.045);
+    }
+    
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:12px;
+    }
+    
+    thead th{
+      text-align:left;
+      background:#f5f7f8;
+      color:#69727e;
+      font-family:var(--mono);
+      font-weight:600;
+      font-size:10.5px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      padding:11px 14px;
+      border-bottom:1px solid #dfe3e7;
+      position:sticky;
+      top:0;
+    }
+    
+    tbody td{
+      padding:10px 14px;
+      border-bottom:1px solid #edf0f2;
+      color:#303640;
+    }
+    
+    tbody tr:last-child td{
+      border-bottom:none;
+    }
+    
+    tbody tr:hover{
+      background:#f7fbfa;
+    }
+    
+    td.mono,
+    th.mono{
+      font-family:var(--mono);
+    }
+    
+    td.num{
+      color:#168f80;
+      font-family:var(--mono);
+      font-weight:600;
+    }
+    
+    .scroll-body{
+      max-height:520px;
+      overflow:auto;
+    }
+    
+    
+    /* ================================
+       SIN RESULTADOS
+       ================================ */
+    
+    .empty{
+      text-align:center;
+      padding:55px 20px;
+      color:#858e99;
+      font-size:13px;
+      background:#ffffff;
+      border:1px dashed #d9dee3;
+      border-radius:12px;
+    }
+    
+    
+    /* ================================
+       FOOTER
+       ================================ */
+    
+    footer.note{
+      margin-top:34px;
+      color:#8a929d;
+      font-size:11px;
+      line-height:1.7;
+      border-top:1px solid #e2e5e9;
+      padding-top:16px;
+    }
+    
+    
+    /* ================================
+       RESPONSIVE
+       ================================ */
+    
+    @media (max-width:800px){
+    
+      .stats{
+        grid-template-columns:repeat(2,1fr);
+      }
+    
+    }
+    
+    @media (max-width:600px){
+    
+      .wrap{
+        padding:20px 14px 60px;
+      }
+    
+      .actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+    
+      .actions button{
+        width:100%;
+      }
+    
+      .filter{
+        width:100%;
+      }
+    
+    }
+  
+  
+  /* =========================================
+     PANTALLA DE PROCESAMIENTO
+     ESTILO LÍNEA 1 METRO DE LIMA
+     ========================================= */
+  
+     .loading-overlay{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+    
+      display:none;
+      align-items:center;
+      justify-content:center;
+    
+      background:rgba(15,23,42,.88);
+      backdrop-filter:blur(5px);
+    
+      padding:20px;
+    }
+    
+    .loading-overlay.active{
+      display:flex;
+    }
+    
+    .loading-box{
+      width:min(460px, 100%);
+      background:#ffffff;
+      border-radius:14px;
+      padding:30px 32px;
+    
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.30);
+    
+      text-align:center;
+    
+      position:relative;
+      overflow:hidden;
+    }
+    
+    /* línea amarilla institucional */
+    .loading-box::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:4px;
+      background:#f5b400;
+    }
+    
+    /* Marca */
+    .loading-brand{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:13px;
+      margin-bottom:26px;
+      text-align:left;
+    }
+    
+    .loading-mark{
+      width:46px;
+      height:46px;
+      border-radius:9px;
+    
+      background:#ffffff;
+      border:1px solid #e0e3e7;
+    
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    
+      flex-shrink:0;
+    }
+    
+    .loading-mark img{
+      max-width:80%;
+      max-height:80%;
+      object-fit:contain;
+      filter:grayscale(1);
+    }
+    
+    .loading-title{
+      font-size:12px;
+      font-weight:800;
+      color:#17233a;
+      letter-spacing:.3px;
+    }
+    
+    .loading-subtitle{
+      font-family:var(--mono);
+      font-size:9px;
+      color:#7c8591;
+      margin-top:3px;
+      letter-spacing:.4px;
+    }
+    
+    /* Spinner */
+    .loading-spinner{
+      width:46px;
+      height:46px;
+    
+      margin:0 auto 18px;
+    
+      border:4px solid #e8ebef;
+      border-top-color:#f5b400;
+    
+      border-radius:50%;
+    
+      animation:metroSpin .85s linear infinite;
+    }
+    
+    @keyframes metroSpin{
+      to{
+        transform:rotate(360deg);
+      }
+    }
+    
+    /* Texto principal */
+    .loading-message{
+      font-size:15px;
+      font-weight:700;
+      color:#20242b;
+      margin-bottom:6px;
+    }
+    
+    /* Texto secundario */
+    .loading-detail{
+      font-family:var(--mono);
+      font-size:10.5px;
+      line-height:1.5;
+      color:#858e99;
+      min-height:32px;
+    }
+    
+    /* Barra */
+    .loading-progress{
+      width:100%;
+      height:7px;
+    
+      margin-top:20px;
+    
+      background:#e9edf1;
+      border-radius:10px;
+      overflow:hidden;
+    }
+    
+    .loading-progress-bar{
+      width:0%;
+      height:100%;
+    
+      background:#f5b400;
+    
+      border-radius:10px;
+    
+      transition:width .35s ease;
+    }
+    
+    /* Porcentaje */
+    .loading-percent{
+      margin-top:9px;
+    
+      font-family:var(--mono);
+      font-size:11px;
+      font-weight:700;
+    
+      color:#17233a;
+    }
+    
+    /* Evitar interacción con la página durante el proceso */
+    body.processing{
+      overflow:hidden;
+    }
+    
+    @media(max-width:600px){
+    
+      .loading-box{
+        padding:26px 22px;
+      }
+    
+      .loading-brand{
+        justify-content:flex-start;
+      }
+    }

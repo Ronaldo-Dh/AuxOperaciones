@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Centro de Operaciones · SAE</title>
+ 
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+ 
+<body>
+ 
+<div class="wrap">
+    <!-- HEADER QSS-->
+    <header class="top">
+        <div class="brand">
+            <div class="brand-mark">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHKY-WTmyJTCGwqtf8H3Sq_SIQP-D8VFX5f2szc4XSag&s=10"
+                    alt="Línea 1">
+            </div>
+            <div>
+                <h1>Centro de Operaciones</h1>
+                <div class="brand-sub">LÍNEA 1 METRO DE LIMA</div>
+            </div>
+ 
+        </div>
+ 
+        <div class="top-right">
+ 
+            <div class="date-box">
+                <strong id="currentDate">—</strong>
+                <span id="currentTime">00:00:00</span>
+            </div>
+ 
+            <div class="status-pill">
+                <span class="live-dot"></span>
+                EN LÍNEA
+            </div>
+ 
+        </div>
+ 
+    </header>
+ 
+ 
+    <!-- =========================================
+         TAREA ACTUAL — LO ÚNICO IMPORTANTE
+         ========================================= -->
+ 
+    <main>
+ 
+        <div class="dashboard">
+ 
+            <section class="card task-card">
+ 
+                <div class="task-kicker" id="taskKicker">
+                    <span class="live-dot"></span>
+                    QUÉ DEBES HACER AHORA
+                </div>
+ 
+                <div class="task-time" id="taskTime">—</div>
+ 
+                <h2 id="taskName">Cargando…</h2>
+ 
+                <button class="primary full" id="taskButton" disabled>
+                    CONFIRMAR
+                </button>
+ 
+                <div class="task-hint" id="taskHint">—</div>
+ 
+            </section>
+ 
+ 
+            <div class="side">
+ 
+                <!-- =====================================
+                     CHECKLIST
+                     ===================================== -->
+ 
+                <section class="card checklist-card">
+ 
+                    <div class="task-kicker">📋 CHECKLIST</div>
+ 
+                    <div class="countdown">
+                        <strong id="checklistDays">—</strong>
+                        <span id="checklistUnit">DÍAS</span>
+                    </div>
+ 
+                    <p id="checklistText">para la próxima programación</p>
+ 
+                    <button class="ghost full" id="programChecklist" disabled>
+                        AÚN NO DISPONIBLE
+                    </button>
+ 
+                </section>
+ 
+ 
+                <!-- =====================================
+                     VER TODO — un solo botón
+                     ===================================== -->
+ 
+                <button class="see-all" id="openTimeline">
+ 
+                    <span>Ver mis actividades de hoy</span>
+                    <b id="todayCount">0</b>
+ 
+                </button>
+ 
+            </div>
+ 
+        </div>
+ 
+ 
+        <!-- =====================================
+             MIS APLICACIONES
+             ===================================== -->
+ 
+        <section class="apps-section">
+ 
+            <div class="section-title">Mis aplicaciones</div>
+ 
+            <div class="apps-grid">
+ 
+                <a class="app-card" href="./app-E3E4/E3_E4.html">
+
+                    <div class="app-icon yellow">E3</div>
+                    <div class="app-name">Validar E3/E4</div>
+                </a>
+ 
+                <div class="app-card disabled">
+                    <div class="app-icon teal">
+                        <img src="https://cdn-icons-png.flaticon.com/128/8157/8157950.png" alt="pronto">
+                    </div>
+                    <div class="app-name">Pronto</div>
+                </div>
+ 
+                <div class="app-card disabled">
+                    <div class="app-icon teal">
+                        <img src="https://cdn-icons-png.flaticon.com/128/8157/8157950.png" alt="pronto">
+                    </div>
+                    <div class="app-name">Pronto</div>
+                </div>
+ 
+            </div>
+ 
+        </section>
+ 
+    </main>
+ 
+</div>
+ 
+ 
+ 
+<!-- =========================================
+     MODAL: TODAS LAS ACTIVIDADES DEL DÍA
+     ========================================= -->
+ 
+<div class="modal-overlay" id="timelineModal">
+ 
+    <div class="modal">
+ 
+        <button class="modal-close" id="closeTimeline">×</button>
+ 
+        <h2>Actividades de hoy</h2>
+ 
+        <div id="timeline"></div>
+ 
+    </div>
+ 
+</div>
+ 
+ 
+ 
+<!-- =========================================
+     MODAL: PROGRAMAR CHECKLIST
+     ========================================= -->
+ 
+<div class="modal-overlay" id="checklistModal">
+ 
+    <div class="modal">
+ 
+        <button class="modal-close" id="closeModal">×</button>
+ 
+        <h2>Programar checklist</h2>
+ 
+        <p>Elige qué programación quieres confirmar.</p>
+ 
+        <div class="program-options">
+ 
+            <button class="program-option" data-period="quincena">
+                <strong>Quincena</strong>
+                <span>Día 15</span>
+            </button>
+ 
+            <button class="program-option" data-period="fin">
+                <strong>Fin de mes</strong>
+                <span>Último día</span>
+            </button>
+ 
+        </div>
+ 
+        <button class="primary full" id="saveChecklist" disabled>
+            CONFIRMAR
+        </button>
+ 
+    </div>
+ 
+</div>
+ 
+ 
+<script src="js/app.js"></script>
+ 
+</body>
+ 
+</html>
